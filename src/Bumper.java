@@ -1,0 +1,11 @@
+
+public enum Bumper
+{
+	SQUARE,
+	TRIANGLE,
+	CIRCLE,
+	LEFT_FLIPPER,
+	RIGHT_FLIPPER;
+}
+
+
