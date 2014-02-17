@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public class StandardFile
 {
@@ -15,7 +17,7 @@ public class StandardFile
 	
 	// (optional) operation performed
 	// on gizmo
-	private String op;
+	private ArrayList<String> op;
 	
 	/**
 	 * Standard format for Gizmoball:
@@ -25,7 +27,7 @@ public class StandardFile
 	 * @param tag Tag for later identification (e.g. Triangle T1)
 	 * @param coX x-axis co-ordinate
 	 * @param coY y-axis co-ordinate
-	 * @param op (optional) Operation performed on gizmo (e.g. Rotate S2 (rotate 90 deg square 2))
+	 * @param ops (optional) Operation performed on gizmo (e.g. Rotate S2 (rotate 90 deg square 2))
 	 */
 
 	public StandardFile()
@@ -77,14 +79,14 @@ public class StandardFile
 		this.coY = coY;
 	}
 
-	public String getOp()
+	public ArrayList<String> getOps()
 	{
 		return op;
 	}
 
-	public void setOp(String op)
+	public void addOp(String op)
 	{
-		this.op = op;
+		this.op.add(op);
 	}
 
 }

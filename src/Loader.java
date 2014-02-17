@@ -6,7 +6,10 @@ public class Loader
 	
 	public static void main(String[] args)
 	{
-		
+		/** Depending on the type of gizmo,
+		 * 	it will be saved as:
+		 * 		[shape] [letter & no.] 
+		 */
 		switch(giz)
 		{
 		
