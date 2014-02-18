@@ -1,11 +1,18 @@
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
+
 public class Loader
 {
 	public static Bumper giz;
 	public static StandardFile sf;
 	public static int squareCount, circleCount, lfCount, rfCount, triCount;
+	public static FileOutputStream fout;
+	public static ObjectOutputStream oos;
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
 		squareCount = 1;
 		circleCount = 1;
@@ -17,34 +24,51 @@ public class Loader
 		 * 	it will be saved as:
 		 * 		[shape] [letter & no.] 
 		 */
-		switch(giz)
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter a gizmo (i.e. Square, Triangle, Circle): ");
+		String input = sc.nextLine();
+		sc.close();
+		
+		switch(input)
 		{
 		
-		case SQUARE:
+		case "Square":
 			sf.setGizmo("Square");
 			sf.setTag("S" + squareCount);
 			squareCount++;
 			
-		case CIRCLE:
+		case "Circle":
 			sf.setGizmo("Circle");
 			sf.setTag("C" + circleCount);
 			circleCount++;
 			
-		case LEFT_FLIPPER:
+		case "Left Flipper":
 			sf.setGizmo("LeftFlipper");
 			sf.setTag("LF" + lfCount);
 			lfCount++;
 			
-		case RIGHT_FLIPPER:
+		case "Right Flipper":
 			sf.setGizmo("RightFlipper");
 			sf.setTag("RL" + rfCount);
 			
-		case TRIANGLE:
+		case "Triangle":
 			sf.setGizmo("Triangle");
 			sf.setTag("T" + triCount);
 			
 		default:
-			break;
+			try
+			{
+				fout = new FileOutputStream("~/Saves/save.ser");
+				oos = new ObjectOutputStream(fout);
+				oos.writeObject(sf);
+				oos.close();
+				System.out.println("Saved!");
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			};
 			
 		}
 			
