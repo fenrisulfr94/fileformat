@@ -1,7 +1,17 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class StandardFile
+/**
+ * Standard file format for Gizmoball.
+ * 
+ * Serialisable for more meaningful save files.
+ * More sophisticated than a simple .txt file.
+ * @author gareth
+ *
+ */
+@SuppressWarnings("serial")
+public class StandardFile implements Serializable
 {
 	// Gizmo type
 	private String gizmo;
@@ -17,7 +27,7 @@ public class StandardFile
 	
 	// (optional) operation performed
 	// on gizmo
-	private ArrayList<String> op;
+	private ArrayList<String> ops;
 	
 	/**
 	 * Standard format for Gizmoball:
@@ -36,7 +46,6 @@ public class StandardFile
 		this.tag = null;
 		this.coX = 0;
 		this.coY = 0;
-		this.op = null;
 	}
 
 	public String getGizmo()
@@ -78,15 +87,15 @@ public class StandardFile
 	{
 		this.coY = coY;
 	}
-
-	public ArrayList<String> getOps()
-	{
-		return op;
-	}
-
+	
 	public void addOp(String op)
 	{
-		this.op.add(op);
+		ops.add(op);
+	}
+	
+	public ArrayList<String> getOps()
+	{
+		return ops;
 	}
 
 }
